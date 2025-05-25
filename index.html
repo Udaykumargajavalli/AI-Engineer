@@ -6,7 +6,7 @@
     <title>Interactive AI Engineer Roadmap</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Visualization & Content Choices:
-        - Report Info: AI Engineer Tools Roadmap (hierarchical text). Goal: Inform, Explore. Viz/Presentation: Interactive cards for tools, grouped by categories. Interaction: Sidebar navigation to switch categories, search/filter tools. Justification: Best for text-heavy, categorical data, promoting focused exploration. Library/Method: HTML, Tailwind CSS, Vanilla JS.
+        - Report Info: AI Engineer Tools Roadmap (hierarchical text). Goal: Inform, Explore. Viz/Presentation: Interactive cards for tools, grouped by categories, with clickable tool names linking to external resources. Interaction: Sidebar navigation to switch categories, search/filter tools. Justification: Best for text-heavy, categorical data, promoting focused exploration and providing direct access to tool resources. Library/Method: HTML, Tailwind CSS, Vanilla JS.
         - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
@@ -86,7 +86,7 @@
                  <div id="welcomeMessage" class="text-center p-8">
                     <h3 class="text-3xl font-semibold text-slate-700 mb-4">Welcome to the Interactive AI Engineer Roadmap!</h3>
                     <p class="text-lg text-slate-600">Select a category from the sidebar to explore the tools and technologies, or use the search bar to find specific tools.</p>
-                    <p class="mt-4 text-sm text-slate-500">This application is designed to help you navigate the diverse landscape of AI engineering.</p>
+                    <p class="mt-4 text-sm text-slate-500">Click on any tool name to visit its (placeholder) GitHub repository.</p>
                 </div>
             </div>
         </main>
@@ -102,42 +102,42 @@
                     {
                         name: 'Programming Languages',
                         tools: [
-                            { name: 'Python', description: 'The de facto standard for AI/ML due to its extensive libraries and frameworks. Versatile and widely adopted in the community.' },
-                            { name: 'R', description: '(Optional) Primarily used for statistical analysis and data visualization. Strong in statistical modeling.' },
-                            { name: 'Julia', description: '(Optional) Gaining traction for high-performance numerical and scientific computing. Designed for speed and technical computing.' },
+                            { name: 'Python', description: 'The de facto standard for AI/ML due to its extensive libraries and frameworks. Versatile and widely adopted in the community.', link: 'https://github.com/python/cpython' },
+                            { name: 'R', description: '(Optional) Primarily used for statistical analysis and data visualization. Strong in statistical modeling.', link: 'https://github.com/r-project/r' },
+                            { name: 'Julia', description: '(Optional) Gaining traction for high-performance numerical and scientific computing. Designed for speed and technical computing.', link: 'https://github.com/JuliaLang/julia' },
                         ]
                     },
                     {
                         name: 'Machine Learning Frameworks',
                         tools: [
-                            { name: 'TensorFlow', description: "Google's open-source library for machine learning, especially deep learning. Offers comprehensive tools for model building and deployment." },
-                            { name: 'PyTorch', description: "Facebook's open-source machine learning library, known for its flexibility, Pythonic feel, and ease of use in research." },
-                            { name: 'Scikit-learn', description: 'A comprehensive library for traditional machine learning algorithms (classification, regression, clustering, etc.). User-friendly and efficient.' },
-                            { name: 'Keras', description: 'A high-level API for building and training deep learning models, often running on top of TensorFlow. Simplifies complex neural network creation.' },
+                            { name: 'TensorFlow', description: "Google's open-source library for machine learning, especially deep learning. Offers comprehensive tools for model building and deployment.", link: 'https://github.com/tensorflow/tensorflow' },
+                            { name: 'PyTorch', description: "Facebook's open-source machine learning library, known for its flexibility, Pythonic feel, and ease of use in research.", link: 'https://github.com/pytorch/pytorch' },
+                            { name: 'Scikit-learn', description: 'A comprehensive library for traditional machine learning algorithms (classification, regression, clustering, etc.). User-friendly and efficient.', link: 'https://github.com/scikit-learn/scikit-learn' },
+                            { name: 'Keras', description: 'A high-level API for building and training deep learning models, often running on top of TensorFlow. Simplifies complex neural network creation.', link: 'https://github.com/keras-team/keras' },
                         ]
                     },
                     {
                         name: 'Data Manipulation & Analysis',
                         tools: [
-                            { name: 'Pandas', description: 'A powerful library for data manipulation and analysis in Python, offering rich data structures like DataFrames.' },
-                            { name: 'NumPy', description: 'The fundamental package for numerical computation in Python, providing support for large, multi-dimensional arrays and matrices.' },
-                            { name: 'SciPy', description: 'A library for scientific and technical computing, building on NumPy for more advanced functions.' },
+                            { name: 'Pandas', description: 'A powerful library for data manipulation and analysis in Python, offering rich data structures like DataFrames.', link: 'https://github.com/pandas-dev/pandas' },
+                            { name: 'NumPy', description: 'The fundamental package for numerical computation in Python, providing support for large, multi-dimensional arrays and matrices.', link: 'https://github.com/numpy/numpy' },
+                            { name: 'SciPy', description: 'A library for scientific and technical computing, building on NumPy for more advanced functions.', link: 'https://github.com/scipy/scipy' },
                         ]
                     },
                     {
                         name: 'Data Visualization',
                         tools: [
-                            { name: 'Matplotlib', description: 'A foundational plotting library for Python, offering a wide range of static, animated, and interactive visualizations.' },
-                            { name: 'Seaborn', description: 'Built on Matplotlib, providing a high-level interface for drawing attractive and informative statistical graphics.' },
-                            { name: 'Plotly/Dash', description: 'For creating interactive visualizations and dashboards.' },
+                            { name: 'Matplotlib', description: 'A foundational plotting library for Python, offering a wide range of static, animated, and interactive visualizations.', link: 'https://github.com/matplotlib/matplotlib' },
+                            { name: 'Seaborn', description: 'Built on Matplotlib, providing a high-level interface for drawing attractive and informative statistical graphics.', link: 'https://github.com/mwaskom/seaborn' },
+                            { name: 'Plotly/Dash', description: 'For creating interactive visualizations and dashboards.', link: 'https://github.com/plotly/plotly.py' },
                         ]
                     },
                     {
                         name: 'Specialized Libraries',
                         tools: [
-                            { name: 'OpenCV', description: 'An open-source computer vision and machine learning software library, widely used for image and video processing tasks.' },
-                            { name: 'NLTK/SpaCy/Hugging Face Transformers', description: 'Key libraries for Natural Language Processing (NLP) tasks, from basic text processing to advanced transformer models.' },
-                            { name: 'Reinforcement Learning Libraries', description: 'e.g., Stable Baselines3, Ray RLlib. Frameworks for developing and testing reinforcement learning agents.' },
+                            { name: 'OpenCV', description: 'An open-source computer vision and machine learning software library, widely used for image and video processing tasks.', link: 'https://github.com/opencv/opencv' },
+                            { name: 'NLTK/SpaCy/Hugging Face Transformers', description: 'Key libraries for Natural Language Processing (NLP) tasks, from basic text processing to advanced transformer models.', link: 'https://github.com/explosion/spaCy' },
+                            { name: 'Reinforcement Learning Libraries', description: 'e.g., Stable Baselines3, Ray RLlib. Frameworks for developing and testing reinforcement learning agents.', link: 'https://github.com/DLR-RM/stable-baselines3' },
                         ]
                     }
                 ]
@@ -150,66 +150,66 @@
                     {
                         name: 'Programming Languages',
                         tools: [
-                            { name: 'Python', description: '(Again!) With frameworks like Flask or FastAPI for building RESTful APIs. Excellent for integrating ML models.' },
-                            { name: 'Node.js/JavaScript', description: 'For building scalable backend services (e.g., Express.js). Known for its event-driven, non-blocking I/O model.' },
-                            { name: 'Go/Java', description: 'For high-performance, enterprise-grade applications requiring strong typing and concurrency features.' },
+                            { name: 'Python', description: '(Again!) With frameworks like Flask or FastAPI for building RESTful APIs. Excellent for integrating ML models.', link: 'https://github.com/python/cpython' },
+                            { name: 'Node.js/JavaScript', description: 'For building scalable backend services (e.g., Express.js). Known for its event-driven, non-blocking I/O model.', link: 'https://github.com/nodejs/node' },
+                            { name: 'Go/Java', description: 'For high-performance, enterprise-grade applications requiring strong typing and concurrency features.', link: 'https://github.com/golang/go' },
                         ]
                     },
                     {
                         name: 'Web Frameworks (Python)',
                         tools: [
-                            { name: 'FastAPI', description: 'Modern, fast (high-performance), web framework for building APIs with Python 3.7+ based on standard Python type hints. Excellent for ML model serving.' },
-                            { name: 'Flask', description: 'A lightweight and flexible web framework, easy to get started with for smaller projects or microservices.' },
-                            { name: 'Django', description: 'A high-level Python web framework that encourages rapid development and clean, pragmatic design. More batteries-included.' },
-                            { name: 'Django REST Framework', description: 'Full-featured API framework for Django, simplifying the creation of RESTful APIs.'},
+                            { name: 'FastAPI', description: 'Modern, fast (high-performance), web framework for building APIs with Python 3.7+ based on standard Python type hints. Excellent for ML model serving.', link: 'https://github.com/tiangolo/fastapi' },
+                            { name: 'Flask', description: 'A lightweight and flexible web framework, easy to get started with for smaller projects or microservices.', link: 'https://github.com/pallets/flask' },
+                            { name: 'Django', description: 'A high-level Python web framework that encourages rapid development and clean, pragmatic design. More batteries-included.', link: 'https://github.com/django/django' },
+                            { name: 'Django REST Framework', description: 'Full-featured API framework for Django, simplifying the creation of RESTful APIs.', link: 'https://github.com/encode/django-rest-framework' },
                         ]
                     },
                     {
                         name: 'Model Serving & APIs',
                         tools: [
-                            { name: 'FastAPI', description: 'High-performance async API framework (Python), often used for serving ML models due to its speed and Pydantic integration.'},
-                            { name: 'Flask', description: 'Lightweight WSGI framework for APIs, suitable for smaller model serving endpoints.'},
-                            { name: 'Django REST Framework', description: 'Full-featured API framework for Django, capable of serving complex ML applications.'},
-                            { name: 'Triton Inference Server', description: 'NVIDIA tool for scalable model serving, supporting multiple frameworks and batching.'},
-                            { name: 'TorchServe', description: 'Serve PyTorch models at scale with ease, providing REST and gRPC endpoints.'},
-                            { name: 'TensorFlow Serving', description: 'Serve TensorFlow models via gRPC/REST, designed for production environments.'},
-                            { name: 'ONNX Runtime', description: 'Serve models in the ONNX (Open Neural Network Exchange) format, providing cross-framework compatibility.'},
+                            { name: 'FastAPI', description: 'High-performance async API framework (Python), often used for serving ML models due to its speed and Pydantic integration.', link: 'https://github.com/tiangolo/fastapi' },
+                            { name: 'Flask', description: 'Lightweight WSGI framework for APIs, suitable for smaller model serving endpoints.', link: 'https://github.com/pallets/flask' },
+                            { name: 'Django REST Framework', description: 'Full-featured API framework for Django, capable of serving complex ML applications.', link: 'https://github.com/encode/django-rest-framework' },
+                            { name: 'Triton Inference Server', description: 'NVIDIA tool for scalable model serving, supporting multiple frameworks and batching.', link: 'https://github.com/triton-inference-server/server' },
+                            { name: 'TorchServe', description: 'Serve PyTorch models at scale with ease, providing REST and gRPC endpoints.', link: 'https://github.com/pytorch/serve' },
+                            { name: 'TensorFlow Serving', description: 'Serve TensorFlow models via gRPC/REST, designed for production environments.', link: 'https://github.com/tensorflow/serving' },
+                            { name: 'ONNX Runtime', description: 'Serve models in the ONNX (Open Neural Network Exchange) format, providing cross-framework compatibility.', link: 'https://github.com/microsoft/onnxruntime' },
                         ]
                     },
                     {
                         name: 'Data Validation & Serialization',
                         tools: [
-                            { name: 'Pydantic', description: 'Data parsing and validation using Python type hints, crucial for robust API inputs and data models.'},
-                            { name: 'Marshmallow', description: 'A lightweight library for object serialization/deserialization and validation.'},
-                            { name: 'Cerberus', description: 'A lightweight and extensible data validation library for Python.'},
+                            { name: 'Pydantic', description: 'Data parsing and validation using Python type hints, crucial for robust API inputs and data models.', link: 'https://github.com/pydantic/pydantic' },
+                            { name: 'Marshmallow', description: 'A lightweight library for object serialization/deserialization and validation.', link: 'https://github.com/marshmallow-code/marshmallow' },
+                            { name: 'Cerberus', description: 'A lightweight and extensible data validation library for Python.', link: 'https://github.com/pyeve/cerberus' },
                         ]
                     },
                     {
                         name: 'Asynchronous Programming & Concurrency',
                         tools: [
-                            { name: 'asyncio', description: 'Native async I/O in Python, enabling concurrent operations without traditional threads, ideal for I/O-bound tasks.'},
-                            { name: 'aiohttp', description: 'Async HTTP client/server framework for asyncio, useful for building non-blocking web services.'},
-                            { name: 'Uvicorn', description: 'An ASGI server for FastAPI and other ASGI frameworks, providing high-performance asynchronous capabilities.'},
-                            { name: 'Gunicorn', description: 'A WSGI HTTP server for Unix, commonly used with Flask and Django for production deployments.'},
-                            { name: 'Celery', description: 'A distributed task queue for background jobs, essential for long-running or asynchronous ML tasks.'},
+                            { name: 'asyncio', description: 'Native async I/O in Python, enabling concurrent operations without traditional threads, ideal for I/O-bound tasks.', link: 'https://github.com/python/cpython/tree/main/Lib/asyncio' },
+                            { name: 'aiohttp', description: 'Async HTTP client/server framework for asyncio, useful for building non-blocking web services.', link: 'https://github.com/aio-libs/aiohttp' },
+                            { name: 'Uvicorn', description: 'An ASGI server for FastAPI and other ASGI frameworks, providing high-performance asynchronous capabilities.', link: 'https://github.com/encode/uvicorn' },
+                            { name: 'Gunicorn', description: 'A WSGI HTTP server for Unix, commonly used with Flask and Django for production deployments.', link: 'https://github.com/benoitc/gunicorn' },
+                            { name: 'Celery', description: 'A distributed task queue for background jobs, essential for long-running or asynchronous ML tasks.', link: 'https://github.com/celery/celery' },
                         ]
                     },
                     {
                         name: 'Databases',
                         tools: [
-                            { name: 'PostgreSQL', description: 'Robust, open-source object-relational database system with a strong reputation for reliability and data integrity.' },
-                            { name: 'MySQL', description: 'Widely used open-source relational database management system, popular for web applications.' },
-                            { name: 'MongoDB', description: 'Document-oriented NoSQL database, useful for unstructured or semi-structured data and flexible schemas.' },
-                            { name: 'Redis', description: 'In-memory data structure store, used as a database, cache, and message broker. Very fast for read/write operations.' },
-                            { name: 'Cassandra', description: 'Distributed NoSQL database designed for handling large amounts of data across many commodity servers.' },
+                            { name: 'PostgreSQL', description: 'Robust, open-source object-relational database system with a strong reputation for reliability and data integrity.', link: 'https://github.com/postgres/postgres' },
+                            { name: 'MySQL', description: 'Widely used open-source relational database management system, popular for web applications.', link: 'https://github.com/mysql/mysql-server' },
+                            { name: 'MongoDB', description: 'Document-oriented NoSQL database, useful for unstructured or semi-structured data and flexible schemas.', link: 'https://github.com/mongodb/mongo' },
+                            { name: 'Redis', description: 'In-memory data structure store, used as a database, cache, and message broker. Very fast for read/write operations.', link: 'https://github.com/redis/redis' },
+                            { name: 'Cassandra', description: 'Distributed NoSQL database designed for handling large amounts of data across many commodity servers.', link: 'https://github.com/apache/cassandra' },
                         ]
                     },
                     {
                         name: 'API Design & Development',
                         tools: [
-                            { name: 'RESTful APIs', description: 'Understanding principles and best practices for designing scalable and maintainable web APIs.' },
-                            { name: 'GraphQL', description: '(Optional) An alternative to REST for more efficient data fetching, allowing clients to request only the data they need.' },
-                            { name: 'OpenAPI/Swagger', description: 'Specifications and tools for designing, building, documenting, and consuming RESTful APIs.' },
+                            { name: 'RESTful APIs', description: 'Understanding principles and best practices for designing scalable and maintainable web APIs.', link: 'https://github.com/placeholder-repo/restful-apis' },
+                            { name: 'GraphQL', description: '(Optional) An alternative to REST for more efficient data fetching, allowing clients to request only the data they need.', link: 'https://github.com/graphql/graphql-spec' },
+                            { name: 'OpenAPI/Swagger', description: 'Specifications and tools for designing, building, documenting, and consuming RESTful APIs.', link: 'https://github.com/OAI/OpenAPI-Specification' },
                         ]
                     }
                 ]
@@ -222,50 +222,50 @@
                     {
                         name: 'Containerization',
                         tools: [
-                            { name: 'Docker', description: 'Essential for packaging applications and their dependencies into portable containers, ensuring consistency across environments.' },
+                            { name: 'Docker', description: 'Essential for packaging applications and their dependencies into portable containers, ensuring consistency across environments.', link: 'https://github.com/docker/docker-ce' },
                         ]
                     },
                     {
                         name: 'Orchestration',
                         tools: [
-                            { name: 'Kubernetes', description: 'For automating the deployment, scaling, and management of containerized applications. The industry standard for container orchestration.' },
-                            { name: 'Kubeflow', description: 'An open-source platform for deploying, managing, and scaling ML workloads on Kubernetes, enabling end-to-end ML pipelines.'},
+                            { name: 'Kubernetes', description: 'For automating the deployment, scaling, and management of containerized applications. The industry standard for container orchestration.', link: 'https://github.com/kubernetes/kubernetes' },
+                            { name: 'Kubeflow', description: 'An open-source platform for deploying, managing, and scaling ML workloads on Kubernetes, enabling end-to-end ML pipelines.', link: 'https://github.com/kubeflow/kubeflow' },
                         ]
                     },
                     {
                         name: 'Workflow Orchestration',
                         tools: [
-                            { name: 'Airflow', description: 'A platform to programmatically author, schedule, and monitor workflows, commonly used for data pipelines and ML workflows.'},
-                            { name: 'Prefect', description: 'A modern dataflow automation system, offering a flexible and robust way to build, run, and monitor data pipelines.'},
+                            { name: 'Airflow', description: 'A platform to programmatically author, schedule, and monitor workflows, commonly used for data pipelines and ML workflows.', link: 'https://github.com/apache/airflow' },
+                            { name: 'Prefect', description: 'A modern dataflow automation system, offering a flexible and robust way to build, run, and monitor data pipelines.', link: 'https://github.com/PrefectHQ/prefect' },
                         ]
                     },
                     {
                         name: 'Model Packaging & Deployment',
                         tools: [
-                            { name: 'MLflow', description: 'An open-source platform for managing the end-to-end machine learning lifecycle, including tracking experiments, packaging ML code, and managing models.'},
-                            { name: 'BentoML', description: 'A framework for building, shipping, and operating AI applications, enabling easy packaging and deployment of models as API endpoints.'},
+                            { name: 'MLflow', description: 'An open-source platform for managing the end-to-end machine learning lifecycle, including tracking experiments, packaging ML code, and managing models.', link: 'https://github.com/mlflow/mlflow' },
+                            { name: 'BentoML', description: 'A framework for building, shipping, and operating AI applications, enabling easy packaging and deployment of models as API endpoints.', link: 'https://github.com/bentoml/BentoML' },
                         ]
                     },
                     {
                         name: 'Version Control',
                         tools: [
-                            { name: 'Git', description: 'Absolutely fundamental for code management, tracking changes, and collaboration in software development.' },
-                            { name: 'GitHub/GitLab/Bitbucket', description: 'Hosting services for Git repositories, offering additional features for collaboration, CI/CD, and project management.' },
-                            { name: 'DVC (Data Version Control)', description: 'An open-source tool for versioning data and machine learning models, working alongside Git.'},
+                            { name: 'Git', description: 'Absolutely fundamental for code management, tracking changes, and collaboration in software development.', link: 'https://github.com/git/git' },
+                            { name: 'GitHub/GitLab/Bitbucket', description: 'Hosting services for Git repositories, offering additional features for collaboration, CI/CD, and project management.', link: 'https://github.com/github' },
+                            { name: 'DVC (Data Version Control)', description: 'An open-source tool for versioning data and machine learning models, working alongside Git.', link: 'https://github.com/iterative/dvc' },
                         ]
                     },
                     {
                         name: 'CI/CD (Continuous Integration/Continuous Deployment)',
                         tools: [
-                            { name: 'Jenkins/GitHub Actions/GitLab CI/Azure DevOps', description: 'Tools for automating the build, test, and deployment pipelines for software and ML models.' },
+                            { name: 'Jenkins/GitHub Actions/GitLab CI/Azure DevOps', description: 'Tools for automating the build, test, and deployment pipelines for software and ML models.', link: 'https://github.com/jenkinsci/jenkins' },
                         ]
                     },
                     {
                         name: 'Cloud Platforms',
                         tools: [
-                            { name: 'AWS (Amazon Web Services)', description: 'Offers a broad suite of services like SageMaker (ML platform), EC2 (compute), Lambda (serverless), S3 (storage), RDS (databases), EKS (Kubernetes).' },
-                            { name: 'Google Cloud Platform (GCP)', description: 'Provides AI Platform/Vertex AI, Compute Engine, Cloud Functions, Cloud Storage, GKE (Kubernetes), and BigQuery (data warehouse).' },
-                            { name: 'Microsoft Azure', description: 'Includes Azure Machine Learning, Azure Kubernetes Service (AKS), Azure Functions, Blob Storage, and various database services.' },
+                            { name: 'AWS (Amazon Web Services)', description: 'Offers a broad suite of services like SageMaker (ML platform), EC2 (compute), Lambda (serverless), S3 (storage), RDS (databases), EKS (Kubernetes).', link: 'https://github.com/aws' },
+                            { name: 'Google Cloud Platform (GCP)', description: 'Provides AI Platform/Vertex AI, Compute Engine, Cloud Functions, Cloud Storage, GKE (Kubernetes), and BigQuery (data warehouse).', link: 'https://github.com/GoogleCloudPlatform' },
+                            { name: 'Microsoft Azure', description: 'Includes Azure Machine Learning, Azure Kubernetes Service (AKS), Azure Functions, Blob Storage, and various database services.', link: 'https://github.com/Azure' },
                         ]
                     }
                 ]
@@ -278,20 +278,20 @@
                     {
                         name: 'Metrics & Visualization',
                         tools: [
-                            { name: 'Prometheus + Grafana', description: 'Prometheus for robust metrics collection and alerting, paired with Grafana for powerful data visualization and dashboarding.'},
+                            { name: 'Prometheus + Grafana', description: 'Prometheus for robust metrics collection and alerting, paired with Grafana for powerful data visualization and dashboarding.', link: 'https://github.com/prometheus/prometheus' },
                         ]
                     },
                     {
                         name: 'Logging & Analysis',
                         tools: [
-                            { name: 'ELK Stack (Elasticsearch, Logstash, Kibana)', description: 'A powerful suite for centralized logging, search, analysis, and visualization of log data.'},
+                            { name: 'ELK Stack (Elasticsearch, Logstash, Kibana)', description: 'A powerful suite for centralized logging, search, analysis, and visualization of log data.', link: 'https://github.com/elastic/elasticsearch' },
                         ]
                     },
                     {
                         name: 'Error Monitoring & Observability',
                         tools: [
-                            { name: 'Sentry', description: 'Real-time error monitoring and crash reporting, helping developers discover, triage, and fix errors.'},
-                            { name: 'OpenTelemetry', description: 'An open-source observability framework for generating, collecting, and exporting telemetry data (metrics, logs, traces).'},
+                            { name: 'Sentry', description: 'Real-time error monitoring and crash reporting, helping developers discover, triage, and fix errors.', link: 'https://github.com/getsentry/sentry' },
+                            { name: 'OpenTelemetry', description: 'An open-source observability framework for generating, collecting, and exporting telemetry data (metrics, logs, traces).', link: 'https://github.com/open-telemetry' },
                         ]
                     }
                 ]
@@ -304,14 +304,14 @@
                     {
                         name: 'API Authentication',
                         tools: [
-                            { name: 'OAuth2', description: 'An authorization framework that enables applications to obtain limited access to user accounts on an HTTP service.'},
-                            { name: 'JWT (JSON Web Tokens)', description: 'A compact, URL-safe means of representing claims to be transferred between two parties, commonly used for token-based authentication.'},
+                            { name: 'OAuth2', description: 'An authorization framework that enables applications to obtain limited access to user accounts on an HTTP service.', link: 'https://github.com/oauth-wg/oauth-v2' },
+                            { name: 'JWT (JSON Web Tokens)', description: 'A compact, URL-safe means of representing claims to be transferred between two parties, commonly used for token-based authentication.', link: 'https://github.com/jwt/jwt' },
                         ]
                     },
                     {
                         name: 'Identity & Access Management (IAM)',
                         tools: [
-                            { name: 'Keycloak / Auth0', description: 'Open-source (Keycloak) and commercial (Auth0) identity and access management solutions for modern applications and services.'},
+                            { name: 'Keycloak / Auth0', description: 'Open-source (Keycloak) and commercial (Auth0) identity and access management solutions for modern applications and services.', link: 'https://github.com/keycloak/keycloak' },
                         ]
                     }
                 ]
@@ -324,16 +324,16 @@
                     {
                         name: 'Experiment Tracking Platforms',
                         tools: [
-                            { name: 'MLflow', description: 'An open-source platform for managing the end-to-end machine learning lifecycle, including tracking experiments, packaging ML code, and managing models.'},
-                            { name: 'Weights & Biases', description: 'A platform for experiment tracking, data and model versioning, and collaboration for machine learning projects, offering rich visualizations.'},
-                            { name: 'Neptune.ai', description: 'A metadata store for MLOps, providing logging, monitoring, and collaboration features for ML experiments.'},
-                            { name: 'Comet.ml', description: 'A platform for tracking, comparing, and optimizing machine learning models, offering experiment management and model production capabilities.'},
+                            { name: 'MLflow', description: 'An open-source platform for managing the end-to-end machine learning lifecycle, including tracking experiments, packaging ML code, and managing models.', link: 'https://github.com/mlflow/mlflow' },
+                            { name: 'Weights & Biases', description: 'A platform for experiment tracking, data and model versioning, and collaboration for machine learning projects, offering rich visualizations.', link: 'https://github.com/wandb/wandb' },
+                            { name: 'Neptune.ai', description: 'A metadata store for MLOps, providing logging, monitoring, and collaboration features for ML experiments.', link: 'https://github.com/neptune-ai/neptune-client' },
+                            { name: 'Comet.ml', description: 'A platform for tracking, comparing, and optimizing machine learning models, offering experiment management and model production capabilities.', link: 'https://github.com/comet-ml/comet-python-sdk' },
                         ]
                     },
                     {
                         name: 'Visualization for Experiments',
                         tools: [
-                            { name: 'TensorBoard', description: 'A visualization toolkit for TensorFlow, useful for visualizing model graphs, metrics, and training parameters during experiments.' },
+                            { name: 'TensorBoard', description: 'A visualization toolkit for TensorFlow, useful for visualizing model graphs, metrics, and training parameters during experiments.', link: 'https://github.com/tensorflow/tensorboard' },
                         ]
                     }
                 ]
@@ -346,28 +346,28 @@
                     {
                         name: 'Dashboards & Quick Demos',
                         tools: [
-                            { name: 'Streamlit', description: 'Create interactive data dashboards and web apps easily in pure Python, ideal for rapid prototyping and demos.'},
-                            { name: 'Gradio', description: 'Quickly create customizable UI components for your ML model, allowing easy sharing and interaction.'},
-                            { name: 'Dash (Plotly)', description: 'Analytical web apps in pure Python, built on Flask, React, and Plotly.js, for creating interactive dashboards.'},
-                            { name: 'Panel', description: 'A high-level dashboarding and app framework for Python, allowing creation of custom interactive dashboards and apps.'},
-                            { name: 'Voila', description: 'Turn Jupyter notebooks into standalone web applications, enabling sharing of interactive analysis without code exposure.'},
+                            { name: 'Streamlit', description: 'Create interactive data dashboards and web apps easily in pure Python, ideal for rapid prototyping and demos.', link: 'https://github.com/streamlit/streamlit' },
+                            { name: 'Gradio', description: 'Quickly create customizable UI components for your ML model, allowing easy sharing and interaction.', link: 'https://github.com/gradio-app/gradio' },
+                            { name: 'Dash (Plotly)', description: 'Analytical web apps in pure Python, built on Flask, React, and Plotly.js, for creating interactive dashboards.', link: 'https://github.com/plotly/dash' },
+                            { name: 'Panel', description: 'A high-level dashboarding and app framework for Python, allowing creation of custom interactive dashboards and apps.', link: 'https://github.com/holoviz/panel' },
+                            { name: 'Voila', description: 'Turn Jupyter notebooks into standalone web applications, enabling sharing of interactive analysis without code exposure.', link: 'https://github.com/voila-dashboards/voila' },
                         ]
                     },
                     {
                         name: 'UI & Web App Frameworks',
                         tools: [
-                            { name: 'React.js', description: 'A popular JavaScript library for building user interfaces, often used for complex ML dashboards and web applications.'},
-                            { name: 'Vue.js', description: 'A lightweight and progressive JavaScript framework for UI development, known for its approachability and flexibility.'},
-                            { name: 'Svelte', description: 'A fast, modern frontend framework that compiles components into highly optimized vanilla JavaScript at build time.'},
+                            { name: 'React.js', description: 'A popular JavaScript library for building user interfaces, often used for complex ML dashboards and web applications.', link: 'https://github.com/facebook/react' },
+                            { name: 'Vue.js', description: 'A lightweight and progressive JavaScript framework for UI development, known for its approachability and flexibility.', link: 'https://github.com/vuejs/core' },
+                            { name: 'Svelte', description: 'A fast, modern frontend framework that compiles components into highly optimized vanilla JavaScript at build time.', link: 'https://github.com/sveltejs/svelte' },
                         ]
                     },
                     {
                         name: 'Visualization Libraries',
                         tools: [
-                            { name: 'Plotly', description: 'Interactive plots and charts in Python, JavaScript, and R, suitable for creating rich, web-based data visualizations.'},
-                            { name: 'Altair', description: 'A declarative statistical visualization library for Python, based on Vega-Lite, for creating beautiful and effective plots.'},
-                            { name: 'Matplotlib / Seaborn', description: 'Traditional static charts and heatmaps in Python, foundational for data exploration and presentation.'},
-                            { name: 'Bokeh', description: 'Interactive plots and dashboards in notebooks or web apps, enabling high-performance visual analytics.'},
+                            { name: 'Plotly', description: 'Interactive plots and charts in Python, JavaScript, and R, suitable for creating rich, web-based data visualizations.', link: 'https://github.com/plotly/plotly.js' },
+                            { name: 'Altair', description: 'A declarative statistical visualization library for Python, based on Vega-Lite, for creating beautiful and effective plots.', link: 'https://github.com/altair-viz/altair' },
+                            { name: 'Matplotlib / Seaborn', description: 'Traditional static charts and heatmaps in Python, foundational for data exploration and presentation.', link: 'https://github.com/matplotlib/matplotlib' },
+                            { name: 'Bokeh', description: 'Interactive plots and dashboards in notebooks or web apps, enabling high-performance visual analytics.', link: 'https://github.com/bokeh/bokeh' },
                         ]
                     }
                 ]
@@ -380,30 +380,30 @@
                     {
                         name: 'Command Line Interface (CLI)',
                         tools: [
-                            { name: 'CLI Proficiency', description: 'Proficiency in using the terminal (Bash, Zsh, etc.) for navigating file systems, running scripts, and managing systems.' },
+                            { name: 'CLI Proficiency', description: 'Proficiency in using the terminal (Bash, Zsh, etc.) for navigating file systems, running scripts, and managing systems.', link: 'https://github.com/placeholder-repo/cli-basics' },
                         ]
                     },
                     {
                         name: 'Linux/Unix Basics',
                         tools: [
-                            { name: 'Linux/Unix Basics', description: 'Understanding operating system fundamentals, permissions, processes, and shell scripting on Linux/Unix systems.' },
+                            { name: 'Linux/Unix Basics', description: 'Understanding operating system fundamentals, permissions, processes, and shell scripting on Linux/Unix systems.', link: 'https://github.com/placeholder-repo/linux-basics' },
                         ]
                     },
                     {
                         name: 'IDEs/Editors',
                         tools: [
-                            { name: 'VS Code', description: 'A popular and versatile source code editor with excellent support for Python and various extensions.' },
-                            { name: 'Jupyter Notebooks/JupyterLab', description: 'Web-based interactive development environments for data science, scientific computing, and machine learning.' },
-                            { name: 'PyCharm', description: 'A dedicated Python IDE with a comprehensive set of tools for professional Python development.' },
+                            { name: 'VS Code', description: 'A popular and versatile source code editor with excellent support for Python and various extensions.', link: 'https://github.com/microsoft/vscode' },
+                            { name: 'Jupyter Notebooks/JupyterLab', description: 'Web-based interactive development environments for data science, scientific computing, and machine learning.', link: 'https://github.com/jupyter/jupyterlab' },
+                            { name: 'PyCharm', description: 'A dedicated Python IDE with a comprehensive set of tools for professional Python development.', link: 'https://github.com/JetBrains/intellij-community' },
                         ]
                     },
                     {
                         name: 'Soft Skills',
                         tools: [
-                            { name: 'Problem Solving', description: 'Critical for debugging issues, designing effective solutions, and overcoming challenges in AI projects.' },
-                            { name: 'Communication', description: 'Essential for collaborating with diverse teams, explaining complex technical concepts clearly, and presenting findings.' },
-                            { name: 'Mathematics & Statistics', description: 'A strong understanding of linear algebra, calculus, probability, and statistics is foundational for AI/ML.' },
-                            { name: 'Domain Knowledge', description: 'Understanding the specific industry or problem domain you are applying AI to enhances the relevance and impact of your work.' },
+                            { name: 'Problem Solving', description: 'Critical for debugging issues, designing effective solutions, and overcoming challenges in AI projects.', link: 'https://github.com/placeholder-repo/problem-solving' },
+                            { name: 'Communication', description: 'Essential for collaborating with diverse teams, explaining complex technical concepts clearly, and presenting findings.', link: 'https://github.com/placeholder-repo/communication-skills' },
+                            { name: 'Mathematics & Statistics', description: 'A strong understanding of linear algebra, calculus, probability, and statistics is foundational for AI/ML.', link: 'https://github.com/placeholder-repo/math-stats' },
+                            { name: 'Domain Knowledge', description: 'Understanding the specific industry or problem domain you are applying AI to enhances the relevance and impact of your work.', link: 'https://github.com/placeholder-repo/domain-knowledge' },
                         ]
                     }
                 ]
@@ -416,11 +416,11 @@
                     {
                         name: 'Full-Stack AI Deployment',
                         tools: [
-                            { name: 'Backend', description: 'FastAPI + Pydantic + Uvicorn + MLflow + Docker: A robust combination for high-performance, validated APIs, model tracking, and containerized deployment.'},
-                            { name: 'Frontend (Demos)', description: 'Streamlit or Gradio: Excellent for quickly creating interactive demos and dashboards for ML models with minimal code.'},
-                            { name: 'Frontend (Production)', description: 'Dash (Plotly) or React.js: For building more complex, production-ready analytical web applications and dashboards.'},
-                            { name: 'Monitoring', description: 'Prometheus + Grafana: A powerful duo for collecting, visualizing, and alerting on metrics from your AI applications.'},
-                            { name: 'Experiment Tracking', description: 'Weights & Biases or MLflow: Essential for logging, comparing, and managing your machine learning experiments and models.'},
+                            { name: 'Backend', description: 'FastAPI + Pydantic + Uvicorn + MLflow + Docker: A robust combination for high-performance, validated APIs, model tracking, and containerized deployment.', link: 'https://github.com/placeholder-repo/backend-stack' },
+                            { name: 'Frontend (Demos)', description: 'Streamlit or Gradio: Excellent for quickly creating interactive demos and dashboards for ML models with minimal code.', link: 'https://github.com/placeholder-repo/frontend-demos-stack' },
+                            { name: 'Frontend (Production)', description: 'Dash (Plotly) or React.js: For building more complex, production-ready analytical web applications and dashboards.', link: 'https://github.com/placeholder-repo/frontend-prod-stack' },
+                            { name: 'Monitoring', description: 'Prometheus + Grafana: A powerful duo for collecting, visualizing, and alerting on metrics from your AI applications.', link: 'https://github.com/placeholder-repo/monitoring-stack' },
+                            { name: 'Experiment Tracking', description: 'Weights & Biases or MLflow: Essential for logging, comparing, and managing your machine learning experiments and models.', link: 'https://github.com/placeholder-repo/exp-tracking-stack' },
                         ]
                     }
                 ]
@@ -503,10 +503,13 @@
                         const card = document.createElement('div');
                         card.className = 'bg-white p-6 rounded-xl shadow-lg card-hover-effect';
 
-                        const toolName = document.createElement('h4');
-                        toolName.textContent = tool.name;
-                        toolName.className = 'text-xl font-semibold text-sky-600 mb-2';
-                        card.appendChild(toolName);
+                        const toolLink = document.createElement('a');
+                        toolLink.href = tool.link || '#'; // Use tool.link or a fallback
+                        toolLink.target = '_blank'; // Open in new tab
+                        toolLink.rel = 'noopener noreferrer'; // Security best practice
+                        toolLink.textContent = tool.name;
+                        toolLink.className = 'text-xl font-semibold text-sky-600 mb-2 block hover:underline'; // Added block for full click area, hover:underline for visual cue
+                        card.appendChild(toolLink);
 
                         const toolDesc = document.createElement('p');
                         toolDesc.textContent = tool.description;
@@ -572,10 +575,13 @@
                             const card = document.createElement('div');
                             card.className = 'bg-white p-6 rounded-xl shadow-lg card-hover-effect';
 
-                            const toolName = document.createElement('h4');
-                            toolName.textContent = tool.name;
-                            toolName.className = 'text-xl font-semibold text-sky-600 mb-2';
-                            card.appendChild(toolName);
+                            const toolLink = document.createElement('a');
+                            toolLink.href = tool.link || '#'; // Use tool.link or a fallback
+                            toolLink.target = '_blank'; // Open in new tab
+                            toolLink.rel = 'noopener noreferrer'; // Security best practice
+                            toolLink.textContent = tool.name;
+                            toolLink.className = 'text-xl font-semibold text-sky-600 mb-2 block hover:underline'; // Added block for full click area, hover:underline for visual cue
+                            card.appendChild(toolLink);
 
                             const toolDesc = document.createElement('p');
                             toolDesc.textContent = tool.description;
