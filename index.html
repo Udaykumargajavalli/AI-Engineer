@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive AI Engineer Roadmap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Visualization & Content Choices:
+        - Report Info: AI Engineer Tools Roadmap (hierarchical text). Goal: Inform, Explore. Viz/Presentation: Interactive cards for tools, grouped by categories. Interaction: Sidebar navigation to switch categories, search/filter tools. Justification: Best for text-heavy, categorical data, promoting focused exploration. Library/Method: HTML, Tailwind CSS, Vanilla JS.
+        - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif; /* Using Inter font as suggested by general guidelines */
+        }
+        /* Custom scrollbar for webkit browsers */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; /* slate-300 */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; /* slate-400 */
+        }
+        .content-fade-enter {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+        .content-fade-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card-hover-effect {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        #mobileMenuButton {
+            display: none; /* Hidden by default, shown on mobile by Tailwind */
+        }
+        @media (max-width: 768px) { /* md breakpoint */
+            #sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 40; /* Ensure sidebar is above content when open */
+            }
+            #sidebar.open {
+                transform: translateX(0);
+            }
+            #mobileMenuButton {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="flex h-screen overflow-hidden">
+        <aside id="sidebar" class="fixed inset-y-0 left-0 md:static md:translate-x-0 w-64 bg-slate-800 text-white p-4 space-y-4 overflow-y-auto">
+            <h1 class="text-2xl font-bold mb-6 border-b border-slate-700 pb-3">AI Roadmap</h1>
+            <nav id="navigationMenu" class="space-y-2">
+                </nav>
+        </aside>
+
+        <main class="flex-1 flex flex-col overflow-hidden">
+            <header class="bg-white shadow-md p-4">
+                <div class="flex justify-between items-center">
+                    <button id="mobileMenuButton" class="md:hidden text-slate-600 hover:text-sky-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                    <h2 id="currentSectionTitle" class="text-xl md:text-2xl font-semibold text-sky-700">Welcome</h2>
+                    <div class="w-full max-w-xs ml-auto">
+                        <input type="search" id="searchInput" placeholder="Search tools..." class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-shadow">
+                    </div>
+                </div>
+            </header>
+
+            <div id="contentArea" class="flex-1 p-6 overflow-y-auto">
+                <div id="welcomeMessage" class="text-center p-8">
+                    <h3 class="text-3xl font-semibold text-slate-700 mb-4">Welcome to the Interactive AI Engineer Roadmap!</h3>
+                    <p class="text-lg text-slate-600">Select a category from the sidebar to explore the tools and technologies, or use the search bar to find specific tools.</p>
+                    <p class="mt-4 text-sm text-slate-500">This application is designed to help you navigate the diverse landscape of AI engineering.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const roadmapData = [
+            {
+                id: 'core-ai-ml',
+                title: 'Core AI/ML Development',
+                introduction: 'This section outlines the foundational programming languages, machine learning frameworks, and libraries for data manipulation, analysis, and visualization that are essential for building and training AI/ML models. Mastering these tools is the first step towards becoming a proficient AI engineer.',
+                categories: [
+                    {
+                        name: 'Programming Languages',
+                        tools: [
+                            { name: 'Python', description: 'The de facto standard for AI/ML due to its extensive libraries and frameworks. Versatile and widely adopted in the community.' },
+                            { name: 'R', description: '(Optional) Primarily used for statistical analysis and data visualization. Strong in statistical modeling.' },
+                            { name: 'Julia', description: '(Optional) Gaining traction for high-performance numerical and scientific computing. Designed for speed and technical computing.' },
+                        ]
+                    },
+                    {
+                        name: 'Machine Learning Frameworks',
+                        tools: [
+                            { name: 'TensorFlow', description: "Google's open-source library for machine learning, especially deep learning. Offers comprehensive tools for model building and deployment." },
+                            { name: 'PyTorch', description: "Facebook's open-source machine learning library, known for its flexibility, Pythonic feel, and ease of use in research." },
+                            { name: 'Scikit-learn', description: 'A comprehensive library for traditional machine learning algorithms (classification, regression, clustering, etc.). User-friendly and efficient.' },
+                            { name: 'Keras', description: 'A high-level API for building and training deep learning models, often running on top of TensorFlow. Simplifies complex neural network creation.' },
+                        ]
+                    },
+                    {
+                        name: 'Data Manipulation & Analysis',
+                        tools: [
+                            { name: 'Pandas', description: 'A powerful library for data manipulation and analysis in Python, offering rich data structures like DataFrames.' },
+                            { name: 'NumPy', description: 'The fundamental package for numerical computation in Python, providing support for large, multi-dimensional arrays and matrices.' },
+                            { name: 'SciPy', description: 'A library for scientific and technical computing, building on NumPy for more advanced functions.' },
+                        ]
+                    },
+                    {
+                        name: 'Data Visualization',
+                        tools: [
+                            { name: 'Matplotlib', description: 'A foundational plotting library for Python, offering a wide range of static, animated, and interactive visualizations.' },
+                            { name: 'Seaborn', description: 'Built on Matplotlib, providing a high-level interface for drawing attractive and informative statistical graphics.' },
+                            { name: 'Plotly/Dash', description: 'For creating interactive visualizations and web-based analytical applications (dashboards).' },
+                        ]
+                    },
+                    {
+                        name: 'Specialized Libraries',
+                        tools: [
+                            { name: 'OpenCV', description: 'An open-source computer vision and machine learning software library, widely used for image and video processing tasks.' },
+                            { name: 'NLTK/SpaCy/Hugging Face Transformers', description: 'Key libraries for Natural Language Processing (NLP) tasks, from basic text processing to advanced transformer models.' },
+                            { name: 'Reinforcement Learning Libraries', description: 'e.g., Stable Baselines3, Ray RLlib. Frameworks for developing and testing reinforcement learning agents.' },
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'backend-development',
+                title: 'Backend Development',
+                introduction: 'Backend development for AI involves creating the server-side logic, APIs, and database interactions necessary to deploy and serve your AI models. This section covers languages, frameworks, and databases crucial for building robust and scalable AI application backends.',
+                categories: [
+                    {
+                        name: 'Programming Languages',
+                        tools: [
+                            { name: 'Python', description: '(Again!) With frameworks like Flask or FastAPI for building RESTful APIs. Excellent for integrating ML models.' },
+                            { name: 'Node.js/JavaScript', description: 'For building scalable backend services (e.g., Express.js). Known for its event-driven, non-blocking I/O model.' },
+                            { name: 'Go/Java', description: 'For high-performance, enterprise-grade applications requiring strong typing and concurrency features.' },
+                        ]
+                    },
+                    {
+                        name: 'Web Frameworks (Python)',
+                        tools: [
+                            { name: 'FastAPI', description: 'Modern, fast (high-performance), web framework for building APIs with Python 3.7+ based on standard Python type hints. Excellent for ML model serving.' },
+                            { name: 'Flask', description: 'A lightweight and flexible web framework, easy to get started with for smaller projects or microservices.' },
+                            { name: 'Django', description: 'A high-level Python web framework that encourages rapid development and clean, pragmatic design. More batteries-included.' },
+                        ]
+                    },
+                    {
+                        name: 'Databases',
+                        tools: [
+                            { name: 'PostgreSQL', description: 'Robust, open-source object-relational database system with a strong reputation for reliability and data integrity.' },
+                            { name: 'MySQL', description: 'Widely used open-source relational database management system, popular for web applications.' },
+                            { name: 'MongoDB', description: 'Document-oriented NoSQL database, useful for unstructured or semi-structured data and flexible schemas.' },
+                            { name: 'Redis', description: 'In-memory data structure store, used as a database, cache, and message broker. Very fast for read/write operations.' },
+                            { name: 'Cassandra', description: 'Distributed NoSQL database designed for handling large amounts of data across many commodity servers.' },
+                        ]
+                    },
+                    {
+                        name: 'API Design & Development',
+                        tools: [
+                            { name: 'RESTful APIs', description: 'Understanding principles and best practices for designing scalable and maintainable web APIs.' },
+                            { name: 'GraphQL', description: '(Optional) An alternative to REST for more efficient data fetching, allowing clients to request only the data they need.' },
+                            { name: 'OpenAPI/Swagger', description: 'Specifications and tools for designing, building, documenting, and consuming RESTful APIs.' },
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'integration-deployment',
+                title: 'Integration & Deployment',
+                introduction: 'This section focuses on the tools and platforms essential for packaging, deploying, managing, and scaling your AI applications in production environments. Effective integration and deployment are key to delivering value from AI models.',
+                categories: [
+                    {
+                        name: 'Containerization',
+                        tools: [
+                            { name: 'Docker', description: 'Essential for packaging applications and their dependencies into portable containers, ensuring consistency across environments.' },
+                        ]
+                    },
+                    {
+                        name: 'Orchestration',
+                        tools: [
+                            { name: 'Kubernetes', description: 'For automating the deployment, scaling, and management of containerized applications. The industry standard for container orchestration.' },
+                        ]
+                    },
+                    {
+                        name: 'Cloud Platforms',
+                        tools: [
+                            { name: 'AWS (Amazon Web Services)', description: 'Offers a broad suite of services like SageMaker (ML platform), EC2 (compute), Lambda (serverless), S3 (storage), RDS (databases), EKS (Kubernetes).' },
+                            { name: 'Google Cloud Platform (GCP)', description: 'Provides AI Platform/Vertex AI, Compute Engine, Cloud Functions, Cloud Storage, GKE (Kubernetes), and BigQuery (data warehouse).' },
+                            { name: 'Microsoft Azure', description: 'Includes Azure Machine Learning, Azure Kubernetes Service (AKS), Azure Functions, Blob Storage, and various database services.' },
+                        ]
+                    },
+                    {
+                        name: 'Version Control',
+                        tools: [
+                            { name: 'Git', description: 'Absolutely fundamental for code management, tracking changes, and collaboration in software development.' },
+                            { name: 'GitHub/GitLab/Bitbucket', description: 'Hosting services for Git repositories, offering additional features for collaboration, CI/CD, and project management.' },
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'frontend-development',
+                title: 'Frontend Development',
+                introduction: 'While not always a primary focus for AI engineers, understanding frontend development allows for the creation of user interfaces to interact with AI applications and showcase results. This section covers basic web technologies and popular frameworks.',
+                categories: [
+                    {
+                        name: 'Web Technologies',
+                        tools: [
+                            { name: 'HTML', description: 'The standard markup language for creating the structure of web pages.' },
+                            { name: 'CSS', description: 'The language for describing the presentation and styling of web pages (e.g., Tailwind CSS for utility-first styling).' },
+                            { name: 'JavaScript', description: 'The programming language that enables interactivity and dynamic content on websites.' },
+                        ]
+                    },
+                    {
+                        name: 'Frontend Frameworks/Libraries',
+                        tools: [
+                            { name: 'React', description: 'A popular JavaScript library for building user interfaces, known for its component-based architecture and declarative programming.' },
+                            { name: 'Angular', description: 'A comprehensive TypeScript-based framework for building single-page applications.' },
+                            { name: 'Vue.js', description: 'A progressive JavaScript framework for building user interfaces, known for its approachability and flexibility.' },
+                        ]
+                    },
+                    {
+                        name: 'UI/UX Design Principles',
+                        tools: [
+                            { name: 'UI/UX Design Principles', description: 'Understanding how to create intuitive, accessible, and user-friendly interfaces to enhance the user experience with AI applications.' },
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'mlops',
+                title: 'MLOps (Machine Learning Operations)',
+                introduction: 'MLOps combines practices from Machine Learning, DevOps, and Data Engineering to manage the entire ML lifecycle. This section highlights tools for experiment tracking, model versioning, CI/CD pipelines, and monitoring to streamline model development and deployment.',
+                categories: [
+                    {
+                        name: 'Experiment Tracking',
+                        tools: [
+                            { name: 'MLflow', description: 'An open-source platform for managing the end-to-end machine learning lifecycle, including tracking experiments, packaging ML code, and managing models.' },
+                            { name: 'TensorBoard', description: 'A visualization toolkit for TensorFlow, useful for visualizing model graphs, metrics, and training parameters.' },
+                            { name: 'Weights & Biases', description: 'A platform for experiment tracking, data and model versioning, and collaboration for machine learning projects.' },
+                        ]
+                    },
+                    {
+                        name: 'Model Versioning',
+                        tools: [
+                            { name: 'DVC (Data Version Control)', description: 'An open-source tool for versioning data and machine learning models, working alongside Git.' },
+                        ]
+                    },
+                    {
+                        name: 'CI/CD (Continuous Integration/Continuous Deployment)',
+                        tools: [
+                            { name: 'Jenkins/GitHub Actions/GitLab CI/Azure DevOps', description: 'Tools for automating the build, test, and deployment pipelines for software and ML models.' },
+                        ]
+                    },
+                    {
+                        name: 'Monitoring & Logging',
+                        tools: [
+                            { name: 'Prometheus/Grafana', description: 'Prometheus for metrics collection and alerting, Grafana for visualizing and analyzing metrics through dashboards.' },
+                            { name: 'ELK Stack (Elasticsearch, Logstash, Kibana)', description: 'A suite for centralized logging, search, and visualization of log data.' },
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'other-essentials',
+                title: 'Other Essential Skills & Tools',
+                introduction: 'Beyond core technical tools, a successful AI Engineer needs proficiency in command-line interfaces, operating system basics, effective use of IDEs, and strong soft skills. This section covers these crucial complementary areas.',
+                categories: [
+                    {
+                        name: 'Command Line Interface (CLI)',
+                        tools: [
+                            { name: 'CLI Proficiency', description: 'Proficiency in using the terminal (Bash, Zsh, etc.) for navigating file systems, running scripts, and managing systems.' },
+                        ]
+                    },
+                    {
+                        name: 'Linux/Unix Basics',
+                        tools: [
+                            { name: 'Linux/Unix Basics', description: 'Understanding operating system fundamentals, permissions, processes, and shell scripting on Linux/Unix systems.' },
+                        ]
+                    },
+                    {
+                        name: 'IDEs/Editors',
+                        tools: [
+                            { name: 'VS Code', description: 'A popular and versatile source code editor with excellent support for Python and various extensions.' },
+                            { name: 'Jupyter Notebooks/JupyterLab', description: 'Web-based interactive development environments for data science, scientific computing, and machine learning.' },
+                            { name: 'PyCharm', description: 'A dedicated Python IDE with a comprehensive set of tools for professional Python development.' },
+                        ]
+                    },
+                    {
+                        name: 'Soft Skills',
+                        tools: [
+                            { name: 'Problem Solving', description: 'Critical for debugging issues, designing effective solutions, and overcoming challenges in AI projects.' },
+                            { name: 'Communication', description: 'Essential for collaborating with diverse teams, explaining complex technical concepts clearly, and presenting findings.' },
+                            { name: 'Mathematics & Statistics', description: 'A strong understanding of linear algebra, calculus, probability, and statistics is foundational for AI/ML.' },
+                            { name: 'Domain Knowledge', description: 'Understanding the specific industry or problem domain you are applying AI to enhances the relevance and impact of your work.' },
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        const navigationMenu = document.getElementById('navigationMenu');
+        const contentArea = document.getElementById('contentArea');
+        const currentSectionTitle = document.getElementById('currentSectionTitle');
+        const searchInput = document.getElementById('searchInput');
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const sidebar = document.getElementById('sidebar');
+        const welcomeMessage = document.getElementById('welcomeMessage');
+
+        let activeSectionId = null;
+
+        function renderNavigation() {
+            navigationMenu.innerHTML = '';
+            roadmapData.forEach(section => {
+                const link = document.createElement('a');
+                link.href = '#';
+                link.textContent = section.title;
+                link.className = 'block px-3 py-2 rounded-md text-sm font-medium hover:bg-sky-700 hover:text-white transition-colors';
+                if (section.id === activeSectionId) {
+                    link.classList.add('bg-sky-600', 'text-white');
+                } else {
+                    link.classList.add('text-slate-300');
+                }
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    setActiveSection(section.id);
+                    if (sidebar.classList.contains('open')) { // Close sidebar on mobile after selection
+                        sidebar.classList.remove('open');
+                    }
+                });
+                navigationMenu.appendChild(link);
+            });
+        }
+
+        function renderContent(sectionId, searchTerm = '') {
+            const section = roadmapData.find(s => s.id === sectionId);
+            if (!section) {
+                contentArea.innerHTML = '<p class="text-center text-slate-500">Section not found.</p>';
+                currentSectionTitle.textContent = 'Error';
+                return;
+            }
+
+            if(welcomeMessage) welcomeMessage.style.display = 'none';
+            contentArea.innerHTML = '';
+            contentArea.classList.remove('content-fade-enter-active');
+            void contentArea.offsetWidth;
+            contentArea.classList.add('content-fade-enter');
+
+
+            currentSectionTitle.textContent = section.title;
+
+            const intro = document.createElement('p');
+            intro.className = 'mb-8 text-slate-600 text-lg leading-relaxed border-l-4 border-sky-500 pl-4 py-2 bg-sky-50 rounded-r-md';
+            intro.textContent = section.introduction;
+            contentArea.appendChild(intro);
+
+            let itemsFound = false;
+            section.categories.forEach(category => {
+                const filteredTools = category.tools.filter(tool =>
+                    tool.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    tool.description.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+
+                if (filteredTools.length > 0) {
+                    itemsFound = true;
+                    const categoryTitle = document.createElement('h3');
+                    categoryTitle.textContent = category.name;
+                    categoryTitle.className = 'text-2xl font-semibold text-slate-700 mt-8 mb-4 pb-2 border-b border-slate-300';
+                    contentArea.appendChild(categoryTitle);
+
+                    const grid = document.createElement('div');
+                    grid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
+
+                    filteredTools.forEach(tool => {
+                        const card = document.createElement('div');
+                        card.className = 'bg-white p-6 rounded-xl shadow-lg card-hover-effect';
+
+                        const toolName = document.createElement('h4');
+                        toolName.textContent = tool.name;
+                        toolName.className = 'text-xl font-semibold text-sky-600 mb-2';
+                        card.appendChild(toolName);
+
+                        const toolDesc = document.createElement('p');
+                        toolDesc.textContent = tool.description;
+                        toolDesc.className = 'text-slate-600 text-sm leading-relaxed';
+                        card.appendChild(toolDesc);
+
+                        grid.appendChild(card);
+                    });
+                    contentArea.appendChild(grid);
+                }
+            });
+
+            if (!itemsFound && searchTerm) {
+                 contentArea.innerHTML = `<p class="text-center text-slate-500 mt-10 text-lg">No tools found matching "${searchTerm}" in this section.</p>`;
+            } else if (!itemsFound && !searchTerm) {
+                 contentArea.innerHTML += `<p class="text-center text-slate-500 mt-10 text-lg">No tools listed in this section currently.</p>`;
+            }
+
+            // Trigger fade-in animation
+            requestAnimationFrame(() => {
+                contentArea.classList.add('content-fade-enter-active');
+            });
+        }
+
+        function renderAllContentFiltered(searchTerm) {
+            if(welcomeMessage) welcomeMessage.style.display = 'none';
+            contentArea.innerHTML = '';
+            contentArea.classList.remove('content-fade-enter-active');
+            void contentArea.offsetWidth;
+            contentArea.classList.add('content-fade-enter');
+
+            currentSectionTitle.textContent = `Search Results for "${searchTerm}"`;
+            let globalItemsFound = false;
+
+            roadmapData.forEach(section => {
+                let sectionHasMatches = false;
+                const sectionContainer = document.createElement('div');
+
+                section.categories.forEach(category => {
+                    const filteredTools = category.tools.filter(tool =>
+                        tool.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        tool.description.toLowerCase().includes(searchTerm.toLowerCase())
+                    );
+
+                    if (filteredTools.length > 0) {
+                        if (!sectionHasMatches) {
+                            const sectionTitleHeader = document.createElement('h2');
+                            sectionTitleHeader.textContent = section.title;
+                            sectionTitleHeader.className = 'text-3xl font-bold text-slate-700 mt-10 mb-3 border-b-2 border-sky-500 pb-2';
+                            sectionContainer.appendChild(sectionTitleHeader);
+                            sectionHasMatches = true;
+                            globalItemsFound = true;
+                        }
+
+                        const categoryTitle = document.createElement('h3');
+                        categoryTitle.textContent = category.name;
+                        categoryTitle.className = 'text-2xl font-semibold text-slate-700 mt-6 mb-4 pb-2 border-b border-slate-300';
+                        sectionContainer.appendChild(categoryTitle);
+
+                        const grid = document.createElement('div');
+                        grid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
+
+                        filteredTools.forEach(tool => {
+                            const card = document.createElement('div');
+                            card.className = 'bg-white p-6 rounded-xl shadow-lg card-hover-effect';
+
+                            const toolName = document.createElement('h4');
+                            toolName.textContent = tool.name;
+                            toolName.className = 'text-xl font-semibold text-sky-600 mb-2';
+                            card.appendChild(toolName);
+
+                            const toolDesc = document.createElement('p');
+                            toolDesc.textContent = tool.description;
+                            toolDesc.className = 'text-slate-600 text-sm leading-relaxed';
+                            card.appendChild(toolDesc);
+
+                            grid.appendChild(card);
+                        });
+                        sectionContainer.appendChild(grid);
+                    }
+                });
+                if (sectionHasMatches) {
+                    contentArea.appendChild(sectionContainer);
+                }
+            });
+
+            if (!globalItemsFound) {
+                contentArea.innerHTML = `<p class="text-center text-slate-500 mt-10 text-lg">No tools found matching "${searchTerm}" across the entire roadmap.</p>`;
+            }
+             requestAnimationFrame(() => {
+                contentArea.classList.add('content-fade-enter-active');
+            });
+        }
+
+
+        function setActiveSection(sectionId) {
+            activeSectionId = sectionId;
+            renderNavigation();
+            renderContent(sectionId, searchInput.value);
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.trim();
+            if (searchTerm === "") {
+                if (activeSectionId) {
+                    renderContent(activeSectionId);
+                } else {
+                    // Show welcome message or default view if no section is active and search is cleared
+                    if(welcomeMessage) welcomeMessage.style.display = 'block';
+                    contentArea.innerHTML = '';
+                    contentArea.appendChild(welcomeMessage);
+                    currentSectionTitle.textContent = "Welcome";
+                }
+            } else {
+                 renderAllContentFiltered(searchTerm);
+                 // Deselect active section in sidebar when global search is active
+                 const currentActiveLink = navigationMenu.querySelector('.bg-sky-600');
+                 if(currentActiveLink) {
+                    currentActiveLink.classList.remove('bg-sky-600', 'text-white');
+                    currentActiveLink.classList.add('text-slate-300');
+                 }
+                 activeSectionId = null; // No section is "active" during global search
+            }
+        });
+
+        mobileMenuButton.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+        });
+
+        // Close sidebar if clicked outside on mobile
+        document.addEventListener('click', (event) => {
+            if (!sidebar.contains(event.target) && !mobileMenuButton.contains(event.target) && sidebar.classList.contains('open')) {
+                sidebar.classList.remove('open');
+            }
+        });
+
+        // Initialize
+        renderNavigation();
+        // Optionally, load the first section by default or show a welcome message
+        // setActiveSection(roadmapData[0].id); // Uncomment to load first section by default
+    </script>
+</body>
+</html>
