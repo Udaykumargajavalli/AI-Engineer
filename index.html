@@ -10,9 +10,8 @@
         - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
-            font-family: 'Inter', sans-serif; /* Using Inter font as suggested by general guidelines */
+            font-family: 'Inter', sans-serif;
         }
-        /* Custom scrollbar for webkit browsers */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
@@ -22,11 +21,11 @@
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb {
-            background: #cbd5e1; /* slate-300 */
+            background: #cbd5e1;
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8; /* slate-400 */
+            background: #94a3b8;
         }
         .content-fade-enter {
             opacity: 0;
@@ -45,13 +44,13 @@
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         }
         #mobileMenuButton {
-            display: none; /* Hidden by default, shown on mobile by Tailwind */
+            display: none;
         }
-        @media (max-width: 768px) { /* md breakpoint */
+        @media (max-width: 768px) {
             #sidebar {
                 transform: translateX(-100%);
                 transition: transform 0.3s ease-in-out;
-                z-index: 40; /* Ensure sidebar is above content when open */
+                z-index: 40;
             }
             #sidebar.open {
                 transform: translateX(0);
@@ -67,7 +66,7 @@
         <aside id="sidebar" class="fixed inset-y-0 left-0 md:static md:translate-x-0 w-64 bg-slate-800 text-white p-4 space-y-4 overflow-y-auto">
             <h1 class="text-2xl font-bold mb-6 border-b border-slate-700 pb-3">AI Roadmap</h1>
             <nav id="navigationMenu" class="space-y-2">
-                </nav>
+            </nav>
         </aside>
 
         <main class="flex-1 flex flex-col overflow-hidden">
@@ -84,7 +83,7 @@
             </header>
 
             <div id="contentArea" class="flex-1 p-6 overflow-y-auto">
-                <div id="welcomeMessage" class="text-center p-8">
+                 <div id="welcomeMessage" class="text-center p-8">
                     <h3 class="text-3xl font-semibold text-slate-700 mb-4">Welcome to the Interactive AI Engineer Roadmap!</h3>
                     <p class="text-lg text-slate-600">Select a category from the sidebar to explore the tools and technologies, or use the search bar to find specific tools.</p>
                     <p class="mt-4 text-sm text-slate-500">This application is designed to help you navigate the diverse landscape of AI engineering.</p>
@@ -130,7 +129,7 @@
                         tools: [
                             { name: 'Matplotlib', description: 'A foundational plotting library for Python, offering a wide range of static, animated, and interactive visualizations.' },
                             { name: 'Seaborn', description: 'Built on Matplotlib, providing a high-level interface for drawing attractive and informative statistical graphics.' },
-                            { name: 'Plotly/Dash', description: 'For creating interactive visualizations and web-based analytical applications (dashboards).' },
+                            { name: 'Plotly/Dash', description: 'For creating interactive visualizations and dashboards.' },
                         ]
                     },
                     {
@@ -146,7 +145,7 @@
             {
                 id: 'backend-development',
                 title: 'Backend Development',
-                introduction: 'Backend development for AI involves creating the server-side logic, APIs, and database interactions necessary to deploy and serve your AI models. This section covers languages, frameworks, and databases crucial for building robust and scalable AI application backends.',
+                introduction: 'Backend development for AI involves creating the server-side logic, APIs, and database interactions necessary to deploy and serve your AI models. This section covers languages, frameworks, and databases crucial for building robust and scalable AI application backends, including new tools for model serving, data validation, and concurrency.',
                 categories: [
                     {
                         name: 'Programming Languages',
@@ -162,6 +161,37 @@
                             { name: 'FastAPI', description: 'Modern, fast (high-performance), web framework for building APIs with Python 3.7+ based on standard Python type hints. Excellent for ML model serving.' },
                             { name: 'Flask', description: 'A lightweight and flexible web framework, easy to get started with for smaller projects or microservices.' },
                             { name: 'Django', description: 'A high-level Python web framework that encourages rapid development and clean, pragmatic design. More batteries-included.' },
+                            { name: 'Django REST Framework', description: 'Full-featured API framework for Django, simplifying the creation of RESTful APIs.'},
+                        ]
+                    },
+                    {
+                        name: 'Model Serving & APIs',
+                        tools: [
+                            { name: 'FastAPI', description: 'High-performance async API framework (Python), often used for serving ML models due to its speed and Pydantic integration.'},
+                            { name: 'Flask', description: 'Lightweight WSGI framework for APIs, suitable for smaller model serving endpoints.'},
+                            { name: 'Django REST Framework', description: 'Full-featured API framework for Django, capable of serving complex ML applications.'},
+                            { name: 'Triton Inference Server', description: 'NVIDIA tool for scalable model serving, supporting multiple frameworks and batching.'},
+                            { name: 'TorchServe', description: 'Serve PyTorch models at scale with ease, providing REST and gRPC endpoints.'},
+                            { name: 'TensorFlow Serving', description: 'Serve TensorFlow models via gRPC/REST, designed for production environments.'},
+                            { name: 'ONNX Runtime', description: 'Serve models in the ONNX (Open Neural Network Exchange) format, providing cross-framework compatibility.'},
+                        ]
+                    },
+                    {
+                        name: 'Data Validation & Serialization',
+                        tools: [
+                            { name: 'Pydantic', description: 'Data parsing and validation using Python type hints, crucial for robust API inputs and data models.'},
+                            { name: 'Marshmallow', description: 'A lightweight library for object serialization/deserialization and validation.'},
+                            { name: 'Cerberus', description: 'A lightweight and extensible data validation library for Python.'},
+                        ]
+                    },
+                    {
+                        name: 'Asynchronous Programming & Concurrency',
+                        tools: [
+                            { name: 'asyncio', description: 'Native async I/O in Python, enabling concurrent operations without traditional threads, ideal for I/O-bound tasks.'},
+                            { name: 'aiohttp', description: 'Async HTTP client/server framework for asyncio, useful for building non-blocking web services.'},
+                            { name: 'Uvicorn', description: 'An ASGI server for FastAPI and other ASGI frameworks, providing high-performance asynchronous capabilities.'},
+                            { name: 'Gunicorn', description: 'A WSGI HTTP server for Unix, commonly used with Flask and Django for production deployments.'},
+                            { name: 'Celery', description: 'A distributed task queue for background jobs, essential for long-running or asynchronous ML tasks.'},
                         ]
                     },
                     {
@@ -185,9 +215,9 @@
                 ]
             },
             {
-                id: 'integration-deployment',
-                title: 'Integration & Deployment',
-                introduction: 'This section focuses on the tools and platforms essential for packaging, deploying, managing, and scaling your AI applications in production environments. Effective integration and deployment are key to delivering value from AI models.',
+                id: 'deployment-cicd-pipelines',
+                title: 'Deployment, CI/CD & Pipelines',
+                introduction: 'This section focuses on the tools and platforms essential for packaging, deploying, managing, and scaling your AI applications in production environments. It covers containerization, orchestration, continuous integration/delivery, and workflow management for ML pipelines.',
                 categories: [
                     {
                         name: 'Containerization',
@@ -199,14 +229,21 @@
                         name: 'Orchestration',
                         tools: [
                             { name: 'Kubernetes', description: 'For automating the deployment, scaling, and management of containerized applications. The industry standard for container orchestration.' },
+                            { name: 'Kubeflow', description: 'An open-source platform for deploying, managing, and scaling ML workloads on Kubernetes, enabling end-to-end ML pipelines.'},
                         ]
                     },
                     {
-                        name: 'Cloud Platforms',
+                        name: 'Workflow Orchestration',
                         tools: [
-                            { name: 'AWS (Amazon Web Services)', description: 'Offers a broad suite of services like SageMaker (ML platform), EC2 (compute), Lambda (serverless), S3 (storage), RDS (databases), EKS (Kubernetes).' },
-                            { name: 'Google Cloud Platform (GCP)', description: 'Provides AI Platform/Vertex AI, Compute Engine, Cloud Functions, Cloud Storage, GKE (Kubernetes), and BigQuery (data warehouse).' },
-                            { name: 'Microsoft Azure', description: 'Includes Azure Machine Learning, Azure Kubernetes Service (AKS), Azure Functions, Blob Storage, and various database services.' },
+                            { name: 'Airflow', description: 'A platform to programmatically author, schedule, and monitor workflows, commonly used for data pipelines and ML workflows.'},
+                            { name: 'Prefect', description: 'A modern dataflow automation system, offering a flexible and robust way to build, run, and monitor data pipelines.'},
+                        ]
+                    },
+                    {
+                        name: 'Model Packaging & Deployment',
+                        tools: [
+                            { name: 'MLflow', description: 'An open-source platform for managing the end-to-end machine learning lifecycle, including tracking experiments, packaging ML code, and managing models.'},
+                            { name: 'BentoML', description: 'A framework for building, shipping, and operating AI applications, enabling easy packaging and deployment of models as API endpoints.'},
                         ]
                     },
                     {
@@ -214,56 +251,7 @@
                         tools: [
                             { name: 'Git', description: 'Absolutely fundamental for code management, tracking changes, and collaboration in software development.' },
                             { name: 'GitHub/GitLab/Bitbucket', description: 'Hosting services for Git repositories, offering additional features for collaboration, CI/CD, and project management.' },
-                        ]
-                    }
-                ]
-            },
-            {
-                id: 'frontend-development',
-                title: 'Frontend Development',
-                introduction: 'While not always a primary focus for AI engineers, understanding frontend development allows for the creation of user interfaces to interact with AI applications and showcase results. This section covers basic web technologies and popular frameworks.',
-                categories: [
-                    {
-                        name: 'Web Technologies',
-                        tools: [
-                            { name: 'HTML', description: 'The standard markup language for creating the structure of web pages.' },
-                            { name: 'CSS', description: 'The language for describing the presentation and styling of web pages (e.g., Tailwind CSS for utility-first styling).' },
-                            { name: 'JavaScript', description: 'The programming language that enables interactivity and dynamic content on websites.' },
-                        ]
-                    },
-                    {
-                        name: 'Frontend Frameworks/Libraries',
-                        tools: [
-                            { name: 'React', description: 'A popular JavaScript library for building user interfaces, known for its component-based architecture and declarative programming.' },
-                            { name: 'Angular', description: 'A comprehensive TypeScript-based framework for building single-page applications.' },
-                            { name: 'Vue.js', description: 'A progressive JavaScript framework for building user interfaces, known for its approachability and flexibility.' },
-                        ]
-                    },
-                    {
-                        name: 'UI/UX Design Principles',
-                        tools: [
-                            { name: 'UI/UX Design Principles', description: 'Understanding how to create intuitive, accessible, and user-friendly interfaces to enhance the user experience with AI applications.' },
-                        ]
-                    }
-                ]
-            },
-            {
-                id: 'mlops',
-                title: 'MLOps (Machine Learning Operations)',
-                introduction: 'MLOps combines practices from Machine Learning, DevOps, and Data Engineering to manage the entire ML lifecycle. This section highlights tools for experiment tracking, model versioning, CI/CD pipelines, and monitoring to streamline model development and deployment.',
-                categories: [
-                    {
-                        name: 'Experiment Tracking',
-                        tools: [
-                            { name: 'MLflow', description: 'An open-source platform for managing the end-to-end machine learning lifecycle, including tracking experiments, packaging ML code, and managing models.' },
-                            { name: 'TensorBoard', description: 'A visualization toolkit for TensorFlow, useful for visualizing model graphs, metrics, and training parameters.' },
-                            { name: 'Weights & Biases', description: 'A platform for experiment tracking, data and model versioning, and collaboration for machine learning projects.' },
-                        ]
-                    },
-                    {
-                        name: 'Model Versioning',
-                        tools: [
-                            { name: 'DVC (Data Version Control)', description: 'An open-source tool for versioning data and machine learning models, working alongside Git.' },
+                            { name: 'DVC (Data Version Control)', description: 'An open-source tool for versioning data and machine learning models, working alongside Git.'},
                         ]
                     },
                     {
@@ -273,10 +261,113 @@
                         ]
                     },
                     {
-                        name: 'Monitoring & Logging',
+                        name: 'Cloud Platforms',
                         tools: [
-                            { name: 'Prometheus/Grafana', description: 'Prometheus for metrics collection and alerting, Grafana for visualizing and analyzing metrics through dashboards.' },
-                            { name: 'ELK Stack (Elasticsearch, Logstash, Kibana)', description: 'A suite for centralized logging, search, and visualization of log data.' },
+                            { name: 'AWS (Amazon Web Services)', description: 'Offers a broad suite of services like SageMaker (ML platform), EC2 (compute), Lambda (serverless), S3 (storage), RDS (databases), EKS (Kubernetes).' },
+                            { name: 'Google Cloud Platform (GCP)', description: 'Provides AI Platform/Vertex AI, Compute Engine, Cloud Functions, Cloud Storage, GKE (Kubernetes), and BigQuery (data warehouse).' },
+                            { name: 'Microsoft Azure', description: 'Includes Azure Machine Learning, Azure Kubernetes Service (AKS), Azure Functions, Blob Storage, and various database services.' },
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'monitoring-logging',
+                title: 'Monitoring & Logging',
+                introduction: 'Effective monitoring and logging are crucial for maintaining the health, performance, and reliability of AI applications in production. This section covers tools for collecting metrics, analyzing logs, and tracking errors to ensure continuous operation and quick issue resolution.',
+                categories: [
+                    {
+                        name: 'Metrics & Visualization',
+                        tools: [
+                            { name: 'Prometheus + Grafana', description: 'Prometheus for robust metrics collection and alerting, paired with Grafana for powerful data visualization and dashboarding.'},
+                        ]
+                    },
+                    {
+                        name: 'Logging & Analysis',
+                        tools: [
+                            { name: 'ELK Stack (Elasticsearch, Logstash, Kibana)', description: 'A powerful suite for centralized logging, search, analysis, and visualization of log data.'},
+                        ]
+                    },
+                    {
+                        name: 'Error Monitoring & Observability',
+                        tools: [
+                            { name: 'Sentry', description: 'Real-time error monitoring and crash reporting, helping developers discover, triage, and fix errors.'},
+                            { name: 'OpenTelemetry', description: 'An open-source observability framework for generating, collecting, and exporting telemetry data (metrics, logs, traces).'},
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'security-auth',
+                title: 'Security & Authentication',
+                introduction: 'Securing AI applications and their data is paramount. This section covers essential tools and concepts for implementing robust authentication and authorization mechanisms, protecting your APIs and user information.',
+                categories: [
+                    {
+                        name: 'API Authentication',
+                        tools: [
+                            { name: 'OAuth2', description: 'An authorization framework that enables applications to obtain limited access to user accounts on an HTTP service.'},
+                            { name: 'JWT (JSON Web Tokens)', description: 'A compact, URL-safe means of representing claims to be transferred between two parties, commonly used for token-based authentication.'},
+                        ]
+                    },
+                    {
+                        name: 'Identity & Access Management (IAM)',
+                        tools: [
+                            { name: 'Keycloak / Auth0', description: 'Open-source (Keycloak) and commercial (Auth0) identity and access management solutions for modern applications and services.'},
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'experiment-tracking',
+                title: 'Experiment Tracking',
+                introduction: 'Experiment tracking is vital for managing the iterative process of machine learning model development. These tools help log parameters, metrics, code versions, and artifacts, enabling reproducibility and collaboration.',
+                categories: [
+                    {
+                        name: 'Experiment Tracking Platforms',
+                        tools: [
+                            { name: 'MLflow', description: 'An open-source platform for managing the end-to-end machine learning lifecycle, including tracking experiments, packaging ML code, and managing models.'},
+                            { name: 'Weights & Biases', description: 'A platform for experiment tracking, data and model versioning, and collaboration for machine learning projects, offering rich visualizations.'},
+                            { name: 'Neptune.ai', description: 'A metadata store for MLOps, providing logging, monitoring, and collaboration features for ML experiments.'},
+                            { name: 'Comet.ml', description: 'A platform for tracking, comparing, and optimizing machine learning models, offering experiment management and model production capabilities.'},
+                        ]
+                    },
+                    {
+                        name: 'Visualization for Experiments',
+                        tools: [
+                            { name: 'TensorBoard', description: 'A visualization toolkit for TensorFlow, useful for visualizing model graphs, metrics, and training parameters during experiments.' },
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'frontend-ai-apps',
+                title: 'Frontend for AI Applications',
+                introduction: 'Frontend tools are crucial for building user interfaces, dashboards, and interactive visualizations that allow users to interact with and understand AI models and their outputs. This section covers frameworks and libraries specifically useful for AI engineers.',
+                categories: [
+                    {
+                        name: 'Dashboards & Quick Demos',
+                        tools: [
+                            { name: 'Streamlit', description: 'Create interactive data dashboards and web apps easily in pure Python, ideal for rapid prototyping and demos.'},
+                            { name: 'Gradio', description: 'Quickly create customizable UI components for your ML model, allowing easy sharing and interaction.'},
+                            { name: 'Dash (Plotly)', description: 'Analytical web apps in pure Python, built on Flask, React, and Plotly.js, for creating interactive dashboards.'},
+                            { name: 'Panel', description: 'A high-level dashboarding and app framework for Python, allowing creation of custom interactive dashboards and apps.'},
+                            { name: 'Voila', description: 'Turn Jupyter notebooks into standalone web applications, enabling sharing of interactive analysis without code exposure.'},
+                        ]
+                    },
+                    {
+                        name: 'UI & Web App Frameworks',
+                        tools: [
+                            { name: 'React.js', description: 'A popular JavaScript library for building user interfaces, often used for complex ML dashboards and web applications.'},
+                            { name: 'Vue.js', description: 'A lightweight and progressive JavaScript framework for UI development, known for its approachability and flexibility.'},
+                            { name: 'Svelte', description: 'A fast, modern frontend framework that compiles components into highly optimized vanilla JavaScript at build time.'},
+                        ]
+                    },
+                    {
+                        name: 'Visualization Libraries',
+                        tools: [
+                            { name: 'Plotly', description: 'Interactive plots and charts in Python, JavaScript, and R, suitable for creating rich, web-based data visualizations.'},
+                            { name: 'Altair', description: 'A declarative statistical visualization library for Python, based on Vega-Lite, for creating beautiful and effective plots.'},
+                            { name: 'Matplotlib / Seaborn', description: 'Traditional static charts and heatmaps in Python, foundational for data exploration and presentation.'},
+                            { name: 'Bokeh', description: 'Interactive plots and dashboards in notebooks or web apps, enabling high-performance visual analytics.'},
                         ]
                     }
                 ]
@@ -316,6 +407,23 @@
                         ]
                     }
                 ]
+            },
+            {
+                id: 'recommended-stacks',
+                title: 'Recommended Stacks',
+                introduction: 'For a modern, full-stack AI deployment, combining the right tools can streamline development and improve efficiency. These recommendations offer a solid starting point for various aspects of an AI engineering project.',
+                categories: [
+                    {
+                        name: 'Full-Stack AI Deployment',
+                        tools: [
+                            { name: 'Backend', description: 'FastAPI + Pydantic + Uvicorn + MLflow + Docker: A robust combination for high-performance, validated APIs, model tracking, and containerized deployment.'},
+                            { name: 'Frontend (Demos)', description: 'Streamlit or Gradio: Excellent for quickly creating interactive demos and dashboards for ML models with minimal code.'},
+                            { name: 'Frontend (Production)', description: 'Dash (Plotly) or React.js: For building more complex, production-ready analytical web applications and dashboards.'},
+                            { name: 'Monitoring', description: 'Prometheus + Grafana: A powerful duo for collecting, visualizing, and alerting on metrics from your AI applications.'},
+                            { name: 'Experiment Tracking', description: 'Weights & Biases or MLflow: Essential for logging, comparing, and managing your machine learning experiments and models.'},
+                        ]
+                    }
+                ]
             }
         ];
 
@@ -344,7 +452,7 @@
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     setActiveSection(section.id);
-                    if (sidebar.classList.contains('open')) { // Close sidebar on mobile after selection
+                    if (sidebar.classList.contains('open')) {
                         sidebar.classList.remove('open');
                     }
                 });
@@ -417,7 +525,6 @@
                  contentArea.innerHTML += `<p class="text-center text-slate-500 mt-10 text-lg">No tools listed in this section currently.</p>`;
             }
 
-            // Trigger fade-in animation
             requestAnimationFrame(() => {
                 contentArea.classList.add('content-fade-enter-active');
             });
@@ -488,7 +595,7 @@
             if (!globalItemsFound) {
                 contentArea.innerHTML = `<p class="text-center text-slate-500 mt-10 text-lg">No tools found matching "${searchTerm}" across the entire roadmap.</p>`;
             }
-             requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
                 contentArea.classList.add('content-fade-enter-active');
             });
         }
@@ -506,7 +613,6 @@
                 if (activeSectionId) {
                     renderContent(activeSectionId);
                 } else {
-                    // Show welcome message or default view if no section is active and search is cleared
                     if(welcomeMessage) welcomeMessage.style.display = 'block';
                     contentArea.innerHTML = '';
                     contentArea.appendChild(welcomeMessage);
@@ -514,13 +620,12 @@
                 }
             } else {
                  renderAllContentFiltered(searchTerm);
-                 // Deselect active section in sidebar when global search is active
                  const currentActiveLink = navigationMenu.querySelector('.bg-sky-600');
                  if(currentActiveLink) {
                     currentActiveLink.classList.remove('bg-sky-600', 'text-white');
                     currentActiveLink.classList.add('text-slate-300');
                  }
-                 activeSectionId = null; // No section is "active" during global search
+                 activeSectionId = null;
             }
         });
 
@@ -528,17 +633,13 @@
             sidebar.classList.toggle('open');
         });
 
-        // Close sidebar if clicked outside on mobile
         document.addEventListener('click', (event) => {
             if (!sidebar.contains(event.target) && !mobileMenuButton.contains(event.target) && sidebar.classList.contains('open')) {
                 sidebar.classList.remove('open');
             }
         });
 
-        // Initialize
         renderNavigation();
-        // Optionally, load the first section by default or show a welcome message
-        // setActiveSection(roadmapData[0].id); // Uncomment to load first section by default
     </script>
 </body>
 </html>
